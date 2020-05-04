@@ -1,5 +1,5 @@
 import React from 'react';
-
+import TimeLineChart from './TimeLineChart.jsx';
 
 class Timeline extends React.Component{
     constructor(props){
@@ -11,7 +11,9 @@ class Timeline extends React.Component{
 
     render(){
         return (
-            <div>asdfda asdfdsa asdfds adsfd</div>
+            <div>
+                <TimeLineChart />
+            </div>
         )
     }
 }

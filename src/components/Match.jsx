@@ -95,10 +95,7 @@ const DataContainer = styled.div`
     align-self: center;
     max-width: 1080px;
     font-size: 30px;
-
 `
-
-
 
 
 class Match extends React.Component{
