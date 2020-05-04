@@ -1,11 +1,12 @@
 import React from 'react';
+import Match from './Match.jsx';
 
 class App extends React.Component{
 
     render(){
         return (
             <div>
-                <div>Hello World</div>
+                <Match />
             </div>
         )
     }
