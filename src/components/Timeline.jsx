@@ -12,7 +12,15 @@ class Timeline extends React.Component{
     render(){
         return (
             <div>
-                <TimeLineChart />
+                <table>
+                    <tbody>
+                    <tr>
+                        {this.state.rounds.map((round, index)=> {
+                            return <TimeLineChart key={index} round={round} />
+                        })}
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         )
     }

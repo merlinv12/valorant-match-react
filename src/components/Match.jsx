@@ -2,45 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import ChartDisplay from './ChartDisplay.jsx';
 import fakeData from '../data.js';
-// const data = {
-//     "matchID": 1,
-//     "greenTeamRoundWins": 12,
-//     "redTeamRoundWins": 13,
-//     "map": "Bind",
-//     "rounds": [
-//         {
-//             "roundId": "asdf123-UID",
-//             "roundNum": 1,
-//             "roundVictory": 0,
-//             "resultCondition": "Elimination",
-//             "players": [
-//                 {
-//                     "playerID": 1112,
-//                     "score": 52,
-//                     "kills": 1,
-//                     "assists": 1,
-//                     "econBank": 700,
-//                     "econLoadout": 100,
-//                     "dmg": 0,
-//                     "equip": {
-//                         "gun": "Classic",
-//                         "shield": "Light Shields"
-//                     }
-//                 }
-//             ],
-//             "events": []
-//         }
-//     ]
-// }
 
 const MatchBackground = styled.div`
     background-image: url("/img/valorantbackground.jpg");
-    filter: blur(13px);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 `
 const MatchGrid = styled.div`
+    backdrop-filter: blur(10px) contrast(.8);
     display: grid;
     grid-template-rows: 1fr 2fr;
     grid-template-columns: 1fr, 1fr, 2fr, 1fr, 1fr;
@@ -114,20 +84,22 @@ class Match extends React.Component{
     render(){
         const { greenTeamRoundWins, redTeamRoundWins } = this.state.data;
         return (
-            <MatchGrid>
-                <ScoreBox>
-                    <GreenScore>{greenTeamRoundWins}</GreenScore>
-                    { greenTeamRoundWins > redTeamRoundWins ? <MatchOutcome>Victory</MatchOutcome> : <MatchOutcome>Defeat</MatchOutcome> }
-                    <RedScore>{redTeamRoundWins}</RedScore>
-                    <TabButton id='summary' onClick={(e) => this.displayTab(e)}>Summary</TabButton>
-                    <TabButton id='scoreboard' onClick={(e) => this.displayTab(e)}>Scoreboard</TabButton>
-                    <TabButton id='timeline' onClick={(e) => this.displayTab(e)}>Timeline</TabButton>
-                    <TabButton id='performance' onClick={(e) => this.displayTab(e)}>Performance</TabButton>
-                </ScoreBox>
-                <DataContainer>
-                    <ChartDisplay display={this.state.displayTab} data={this.state.data} />
-                </DataContainer>
-            </MatchGrid>
+            <MatchBackground>
+                <MatchGrid>
+                    <ScoreBox>
+                        <GreenScore>{greenTeamRoundWins}</GreenScore>
+                        { greenTeamRoundWins > redTeamRoundWins ? <MatchOutcome>Victory</MatchOutcome> : <MatchOutcome>Defeat</MatchOutcome> }
+                        <RedScore>{redTeamRoundWins}</RedScore>
+                        <TabButton id='summary' onClick={(e) => this.displayTab(e)}>Summary</TabButton>
+                        <TabButton id='scoreboard' onClick={(e) => this.displayTab(e)}>Scoreboard</TabButton>
+                        <TabButton id='timeline' onClick={(e) => this.displayTab(e)}>Timeline</TabButton>
+                        <TabButton id='performance' onClick={(e) => this.displayTab(e)}>Performance</TabButton>
+                    </ScoreBox>
+                    <DataContainer>
+                        <ChartDisplay display={this.state.displayTab} data={this.state.data} />
+                    </DataContainer>
+                </MatchGrid> 
+            </MatchBackground>
         )
     }
 }

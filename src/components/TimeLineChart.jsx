@@ -5,9 +5,10 @@ class TimeLineChart extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            roundNum: 1,
-            greenEcon: 1000,
-            redEcon: 1000,
+            roundNum: this.props.round.roundNum,
+            greenEcon: this.props.round.greenEcon,
+            redEcon: this.props.round.redEcon,
+            result: this.props.round.roundVictory + ' ' + this.props.round.resultCondition,
         }
     }
 
@@ -29,7 +30,7 @@ class TimeLineChart extends React.Component{
                 yAxes: [{
                     display: false, //this will remove all the y-axis grid lines
                     ticks: {
-                        display: false, //this will remove only the label
+                        display: true, //this will remove only the label
                         min: 0,
                         max: 12000,
                     }
@@ -45,6 +46,7 @@ class TimeLineChart extends React.Component{
             labels: ['green', 'red'],
             datasets: [{
                 data: [greenEcon, redEcon],
+                fillColor: "rgba(220,220,220,0)",
                 backgroundColor: ['rgba(0, 128, 0, 0.6)', 'rgba(128, 0, 0, 0.6)'],
             }]
         };
@@ -61,12 +63,13 @@ class TimeLineChart extends React.Component{
 // 
     render(){
         return (
-            <div>
+            <td>
                 <canvas
-                    style={{ width: 200, height: 200}}
+                    style={{ width: 80, height: 150}}
                     ref={node => (this.node = node)}
                 />
-            </div>
+                <span>{this.state.result}</span>
+            </td>
         );
     }     
 } 
