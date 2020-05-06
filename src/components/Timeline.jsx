@@ -1,5 +1,24 @@
 import React from 'react';
 import TimeLineChart from './TimeLineChart.jsx';
+import styled from 'styled-components';
+
+const TimeLineChartContainer = styled.div`
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr, 1fr;
+    grid-row-gap: 10px;
+    grid-template-areas:
+    "timeline timeline"
+    "chart chart";
+`
+
+const TimeLineTable = styled.table`
+    grid-area: timeline;
+    display:flex;
+    justify-content: start;
+
+`
+
 
 class Timeline extends React.Component{
     constructor(props){
@@ -11,8 +30,8 @@ class Timeline extends React.Component{
 
     render(){
         return (
-            <div>
-                <table>
+            <TimeLineChartContainer>
+                <TimeLineTable>
                     <tbody>
                     <tr>
                         {this.state.rounds.map((round, index)=> {
@@ -20,8 +39,8 @@ class Timeline extends React.Component{
                         })}
                     </tr>
                     </tbody>
-                </table>
-            </div>
+                </TimeLineTable>
+            </TimeLineChartContainer>
         )
     }
 }
