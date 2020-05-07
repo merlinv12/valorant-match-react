@@ -22,20 +22,19 @@ const MatchBackground = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 1400px;
-    height: 720px;
+    width: 100vw;
+    height: 100vh;
 `
 const MatchGrid = styled.div`
     backdrop-filter: blur(10px) contrast(.8);
     display: grid;
     grid-template-rows: 1fr 2fr;
     grid-template-columns: 1fr, 1fr, 4fr, 1fr, 1fr;
-    grid-row-gap: 40px;
     grid-template-areas:
     ". . Scorebox Scorebox  . ."
     ".  data data data data .";
-    width: 1400px;
-    height: 720px;
+    width: 100vw;
+    height: 100vh;
 `
 
 const ScoreBox = styled.div`
@@ -45,6 +44,8 @@ const ScoreBox = styled.div`
     text-transform: uppercase;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    width: 720px;
+    height: 210px;
 `
 
 const RedScore = styled.div`
@@ -120,9 +121,13 @@ const DataContainer = styled.div`
     grid-area: data;
     justify-self: center;
     align-self: center;
-    min-width:1080px;
-    min-height: 400px;
+    // min-width:1080px;
+    // min-height: 400px;
     // box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+    top: 0px
+    left: 0px;
+    height: 100%;
+    width: 100%;
 `
 
 

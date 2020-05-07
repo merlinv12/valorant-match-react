@@ -14,6 +14,7 @@ const ChartBox = styled.td`
         opacity: .3;
         box-shadow: inset 0 0 0 1000px rgba(255,255,255,.3);
     }
+    padding: 10px;
 `
 
 class TimeLineChart extends React.Component{
@@ -53,7 +54,7 @@ class TimeLineChart extends React.Component{
             },
             title: {
                 display: true,
-                text: roundNum
+                text: roundNum < 25 ? roundNum : "OT"
             }
         }
 

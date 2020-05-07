@@ -10,17 +10,28 @@ const TimeLineChartContainer = styled.div`
     grid-template-areas:
     "timeline timeline"
     "tlstats events";
+    width: 1630px;
 `
 
 const TimeLineRounds = styled.table`
     grid-area: timeline;
     display:flex;
     justify-content: flex-start;
-
+    border-bottom: solid 1px white;
 `
 const TimeLineStats = styled.table`
     grid-area: tlstats;
     display: flex;
+`
+
+const HalftimeIcon = styled.td`
+    display: block;
+    content: url("/img/half.svg");
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 30px;
+    filter: invert(100%)
 `
 
 class Timeline extends React.Component{
@@ -46,7 +57,15 @@ class Timeline extends React.Component{
                     <tbody>
                     <tr>
                         {this.state.rounds.map((round, index)=> {
-                            return <TimeLineChart key={index} round={round} selectRound={this.selectRound}/>
+                            if (round.roundNum < 13){
+                                return <TimeLineChart key={index} round={round} selectRound={this.selectRound}/>
+                            }
+                        })}
+                        <HalftimeIcon></HalftimeIcon>
+                        {this.state.rounds.map((round, index)=> {
+                            if (round.roundNum > 12){
+                                return <TimeLineChart key={index} round={round} selectRound={this.selectRound}/>
+                            }
                         })}
                     </tr>
                     </tbody>
@@ -58,5 +77,12 @@ class Timeline extends React.Component{
         )
     }
 }
+
+
+
+
+const TimeLineStatsPlayerRow = styled.tr`
+
+`
 
 export default Timeline;
