@@ -3,6 +3,20 @@ import styled from 'styled-components';
 import ChartDisplay from './ChartDisplay.jsx';
 import fakeData from '../data.js';
 
+//colors
+//green HTML/HEX code:	#549283	
+// RGB code:	rgb(84, 146, 131)
+
+//yellow 
+// HTML/HEX code:	#eaeeb1	
+// RGB code:	rgb(234, 238, 177)
+
+// red
+// HTML/HEX code:	#b35354	
+// RGB code:	rgb(179, 83, 84)
+
+
+
 const MatchBackground = styled.div`
     background-image: url("/img/valorantbackground.png");
     background-position: center;
@@ -37,17 +51,18 @@ const RedScore = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: -100px;
+    color: #b35354;
 `
 
 const GreenScore = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: -100px;
-    
+    color: #549283;
 `
 
 const MatchOutcome = styled.div`
@@ -58,7 +73,7 @@ const MatchOutcome = styled.div`
     font-size: 3em;
     font-weight: bold;
     margin-bottom: -100px;
-
+    color: #eaeeb1;
 `
 
 const TabButton = styled.button`
@@ -68,11 +83,10 @@ const TabButton = styled.button`
     ${props => {
         if (props.selected){
             return `
-            border-bottom: solid .2em  #f8d05d;
             &:after {
                 border-right: solid 1em transparent;
                 border-left: solid 1em  transparent;
-                border-bottom: solid .7em  #f8d05d;
+                border-bottom: solid .7em  #eaeeb1;
                 transform: translateX(-50%);
                 position: absolute;
                 z-index: 1;
@@ -98,7 +112,7 @@ const TabButton = styled.button`
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: ${props => props.selected ? "solid .2em #f8d05d" : "solid .1em"};
+    border-bottom: ${props => props.selected ? "solid .2em #eaeeb1" : "solid .1em"};
     position: relative;
 `
 

@@ -9,37 +9,51 @@ const TimeLineChartContainer = styled.div`
     grid-row-gap: 10px;
     grid-template-areas:
     "timeline timeline"
-    "chart chart";
+    "tlstats events";
 `
 
-const TimeLineTable = styled.table`
+const TimeLineRounds = styled.table`
     grid-area: timeline;
     display:flex;
-    justify-content: start;
+    justify-content: flex-start;
 
 `
-
+const TimeLineStats = styled.table`
+    grid-area: tlstats;
+    display: flex;
+`
 
 class Timeline extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            rounds: this.props.data.rounds
+            rounds: this.props.data.rounds,
+            selectedRound: null,
         }
+        this.selectRound = this.selectRound.bind(this);
+    }
+
+    selectRound(roundNum){
+        this.setState({
+            selectedRound: roundNum
+        })
     }
 
     render(){
         return (
             <TimeLineChartContainer>
-                <TimeLineTable>
+                <TimeLineRounds>
                     <tbody>
                     <tr>
                         {this.state.rounds.map((round, index)=> {
-                            return <TimeLineChart key={index} round={round} />
+                            return <TimeLineChart key={index} round={round} selectRound={this.selectRound}/>
                         })}
                     </tr>
                     </tbody>
-                </TimeLineTable>
+                </TimeLineRounds>
+                <TimeLineStats>
+                    <thead>{this.state.selectedRound}</thead>
+                </TimeLineStats>
             </TimeLineChartContainer>
         )
     }

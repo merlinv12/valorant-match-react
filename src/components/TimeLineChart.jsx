@@ -84,6 +84,7 @@ class TimeLineChart extends React.Component{
         return (
             <ChartBox>
                 <canvas
+                    onClick={()=>this.props.selectRound(this.props.round.roundNum)}
                     style={{ width: 50, height: 100}}
                     ref={node => (this.node = node)}
                 />
