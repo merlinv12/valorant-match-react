@@ -54,7 +54,9 @@ class TimeLineChart extends React.Component{
             },
             title: {
                 display: true,
-                text: roundNum < 25 ? roundNum : "OT"
+                text: roundNum < 25 ? roundNum : "OT",
+                fontFamily: "Montserrat, sans-serif",
+                fontColor: "white",
             }
         }
 
@@ -63,7 +65,7 @@ class TimeLineChart extends React.Component{
             datasets: [{
                 data: [greenEcon, redEcon],
                 fillColor: "rgba(220,220,220,0)",
-                backgroundColor: ['rgba(0, 128, 0, 0.6)', 'rgba(128, 0, 0, 0.6)'],
+                backgroundColor: ['rgba(84, 146, 131, .8)', 'rgba(179, 83, 84, 0.8)'],
                 borderWidth: 1,
                 categoryPercentage: .8,
                 barPercentage: .8,
