@@ -7,10 +7,10 @@ The game is still in development and there is no official public API to access d
 ## To Do:
 - [x] Create Sample JSON object that would be recieved from unique match ID
   - [ ] Create database schema and functions to generate seed data
-- [ ] Create layout for main page featuring final score with outcome, 4 tabs, and area for data
+- [x] Create layout for main page featuring final score with outcome, 4 tabs, and area for data
   - [ ] Background image based on Map
-- [ ] Create Timeline component and subcomponents
-  - [ ] Create rounds timeline economy graphs
-  - [ ] Create round layout for player stats and events
-  - [ ] Create table for round stats
+- [x] Create Timeline component and subcomponents
+  - [x] Create rounds timeline economy graphs
+  - [x] Create round layout for player stats and events
+  - [x] Create table for round stats
 - [ ] Finish other 3 components ?
