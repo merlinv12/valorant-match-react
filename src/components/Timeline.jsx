@@ -1,10 +1,11 @@
 import React from 'react';
 import TimeLineChart from './TimeLineChart.jsx';
+import TimeLineStatsTable from './TimeLineStatsTable.jsx';
 import styled from 'styled-components';
 
 const TimeLineChartContainer = styled.div`
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: minmax(1fr, 130px) 2fr;
     grid-template-columns: 1fr, 1fr;
     grid-row-gap: 10px;
     grid-template-areas:
@@ -19,9 +20,10 @@ const TimeLineRounds = styled.table`
     justify-content: flex-start;
     border-bottom: solid 1px white;
 `
-const TimeLineStats = styled.table`
+const TimeLineStatsTableContainer = styled.div`
     grid-area: tlstats;
     display: flex;
+    padding-left: 40px;
 `
 
 const HalftimeIcon = styled.td`
@@ -39,14 +41,14 @@ class Timeline extends React.Component{
         super(props)
         this.state = {
             rounds: this.props.data.rounds,
-            selectedRound: null,
+            selectedRound: 1,
         }
         this.selectRound = this.selectRound.bind(this);
     }
 
     selectRound(roundNum){
         this.setState({
-            selectedRound: roundNum
+            selectedRound: roundNum-1
         })
     }
 
@@ -70,9 +72,9 @@ class Timeline extends React.Component{
                     </tr>
                     </tbody>
                 </TimeLineRounds>
-                <TimeLineStats>
-                    <thead>{this.state.selectedRound}</thead>
-                </TimeLineStats>
+                <TimeLineStatsTableContainer>
+                    <TimeLineStatsTable round={this.state.rounds[this.state.selectedRound]}/>
+                </TimeLineStatsTableContainer>
             </TimeLineChartContainer>
         )
     }

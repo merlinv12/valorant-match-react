@@ -75,11 +75,13 @@ function createFakeMatch(){
         for (let j = 1; j < 11; j++){
             let player = {};
             player.playerID = j;
+            player.agent = "Sova"
+            player.playerName = "player"+j
             player.score = Math.floor(Math.random() * 100)
             player.kills = Math.floor(Math.random() * 2)
             player.assists = Math.floor(Math.random() * 2)
-            player.econBank = Math.floor(Math.random() * 12000);
-            player.econLoadout = Math.floor(Math.random() * 6000);
+            player.econBank = Math.floor((Math.random() * 12000) / 100) * 100;
+            player.econLoadout = Math.floor((Math.random() * 6000) / 100) * 100;
             player.equip = {
                 "gun": "Classic",
                 "shield": "Light Shields"

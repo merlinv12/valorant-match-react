@@ -14,7 +14,7 @@ const ChartBox = styled.td`
         opacity: .3;
         box-shadow: inset 0 0 0 1000px rgba(255,255,255,.3);
     }
-    padding: 10px;
+    padding: 5px;
 `
 
 class TimeLineChart extends React.Component{

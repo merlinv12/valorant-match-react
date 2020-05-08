@@ -22,13 +22,19 @@ const MatchBackground = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100vw;
-    height: 100vh;
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(10px) contrast(.8);
+    width: 110vw;
+    height: 110vh;
 `
 const MatchGrid = styled.div`
-    backdrop-filter: blur(10px) contrast(.8);
+    // backdrop-filter: blur(10px) contrast(.8);
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: minmax(300px, 300px) 2fr;
     grid-template-columns: 1fr, 1fr, 4fr, 1fr, 1fr;
     grid-template-areas:
     ". . Scorebox Scorebox  . ."
@@ -44,6 +50,7 @@ const ScoreBox = styled.div`
     text-transform: uppercase;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    padding-top: 50px;
     width: 720px;
     height: 210px;
 `
@@ -147,7 +154,8 @@ class Match extends React.Component{
     render(){
         const { greenTeamRoundWins, redTeamRoundWins } = this.state.data;
         return (
-            <MatchBackground>
+            <div>
+                <MatchBackground></MatchBackground>
                 <MatchGrid>
                     <ScoreBox>
                         <GreenScore>{greenTeamRoundWins}</GreenScore>
@@ -162,7 +170,7 @@ class Match extends React.Component{
                         <ChartDisplay display={this.state.displayTab} data={this.state.data} />
                     </DataContainer>       
                 </MatchGrid> 
-            </MatchBackground>
+            </div>
         )
     }
 }
