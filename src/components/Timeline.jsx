@@ -41,7 +41,7 @@ class Timeline extends React.Component{
         super(props)
         this.state = {
             rounds: this.props.data.rounds,
-            selectedRound: 1,
+            selectedRound: 0,
         }
         this.selectRound = this.selectRound.bind(this);
     }
@@ -79,12 +79,5 @@ class Timeline extends React.Component{
         )
     }
 }
-
-
-
-
-const TimeLineStatsPlayerRow = styled.tr`
-
-`
 
 export default Timeline;

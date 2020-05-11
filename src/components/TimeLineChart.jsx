@@ -8,13 +8,39 @@ const ChartBox = styled.td`
     box-shadow: inset 0 0 0 1000px rgba(255,255,255,.1);
     font-family: "Montserrat",sans-serif;
     text-transform: uppercase;
+    display: table-cell;
     color: white;
     &:hover {
-        background-color: white;
+        background-color: lightgray;
         opacity: .3;
         box-shadow: inset 0 0 0 1000px rgba(255,255,255,.3);
     }
     padding: 5px;
+`
+
+const ChartBoxIcon = styled.div`
+    content: ${props => {
+        if (props.resultCondition === "Elimination"){
+            return `url("/img/elim.svg")`
+        } else if (props.resultCondition === "Defuse"){
+            return `url("/img/defuse.svg")`
+        } else if (props.resultCondition === "Spike"){
+            return `url("/img/spike.svg")`
+        }
+        else if (props.resultCondition === "Time"){
+            return `url("/img/time.svg")`
+        }
+    }
+    };
+    filter : ${props => props.team === 'green' ?
+        "invert(53%) sepia(10%) saturate(1301%) hue-rotate(115deg) brightness(95%) contrast(89%)" :
+        "invert(37%) sepia(45%) saturate(506%) hue-rotate(309deg) brightness(102%) contrast(113%)"
+    };
+    padding-top: 5px;
+    left: 30%;
+    position: relative;
+    height: 22px;
+    width: 22px;
 `
 
 class TimeLineChart extends React.Component{
@@ -36,6 +62,8 @@ class TimeLineChart extends React.Component{
         let node = this.node;
         let options = {
             legend: {display: false},
+            tooltips: {enabled: false},
+            hover: {mode: null},
             scales: {
                 xAxes: [{
                     display: false, //this will remove all the x-axis grid lines
@@ -91,6 +119,7 @@ class TimeLineChart extends React.Component{
                     style={{ width: 50, height: 100}}
                     ref={node => (this.node = node)}
                 />
+                <ChartBoxIcon resultCondition={this.props.round.resultCondition} team={this.props.round.roundVictory}></ChartBoxIcon>
             </ChartBox>
         );
     }     

@@ -29,7 +29,7 @@ const MatchBackground = styled.div`
     z-index: -1;
     filter: blur(10px) contrast(.8);
     width: 110vw;
-    height: 110vh;
+    height: 120vh;
 `
 const MatchGrid = styled.div`
     // backdrop-filter: blur(10px) contrast(.8);

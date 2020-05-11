@@ -70,7 +70,7 @@ function createFakeMatch(){
         round.roundNum = i+1;
         Math.floor(Math.random() * 2 ) === 1 ? round.roundVictory = "green" : round.roundVictory = 'red';
         round.roundVictory === 'green' ? match.greenTeamRoundWins++ : match.redTeamRoundWins++;
-        round.resultCondition = ['Elimination', 'Defuse', 'Bomb', 'Time'][0]
+        round.resultCondition = ['Elimination', 'Defuse', 'Spike', 'Time'][Math.floor(Math.random() * 4)]
         round.players = [];
         for (let j = 1; j < 11; j++){
             let player = {};
