@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import ChartDisplay from './ChartDisplay.jsx';
 import fakeData from '../data.js';
@@ -136,43 +136,30 @@ const DataContainer = styled.div`
     height: 100%;
     width: 100%;
 `
+const Match = (props) => {
+    const [displayTab, setDisplayTab] = useState('timeline');
+    const [data, setData] = useState(fakeData);
+    const { greenTeamRoundWins, redTeamRoundWins } = data;
 
-
-class Match extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            displayTab: 'timeline',
-            data: fakeData
-        };
-    }
-
-    displayTab(e){
-        this.setState({ displayTab: e.target.id})
-    }
-
-    render(){
-        const { greenTeamRoundWins, redTeamRoundWins } = this.state.data;
-        return (
-            <div>
-                <MatchBackground></MatchBackground>
-                <MatchGrid>
-                    <ScoreBox>
-                        <GreenScore>{greenTeamRoundWins}</GreenScore>
-                        { greenTeamRoundWins > redTeamRoundWins ? <MatchOutcome>Victory</MatchOutcome> : <MatchOutcome>Defeat</MatchOutcome> }
-                        <RedScore>{redTeamRoundWins}</RedScore>
-                        <TabButton id='summary' onClick={(e) => this.displayTab(e)} selected={this.state.displayTab === 'summary'}>Summary</TabButton>
-                        <TabButton id='scoreboard' onClick={(e) => this.displayTab(e)} selected={this.state.displayTab === 'scoreboard'}>Scoreboard</TabButton>
-                        <TabButton id='timeline' onClick={(e) => this.displayTab(e)} selected={this.state.displayTab === 'timeline'}>Timeline</TabButton>
-                        <TabButton id='performance' onClick={(e) => this.displayTab(e)} selected={this.state.displayTab === 'performance'}>Performance</TabButton>
-                    </ScoreBox>
-                    <DataContainer>
-                        <ChartDisplay display={this.state.displayTab} data={this.state.data} />
-                    </DataContainer>       
-                </MatchGrid> 
-            </div>
-        )
-    }
+    return (
+        <div>
+            <MatchBackground></MatchBackground>
+            <MatchGrid>
+                <ScoreBox>
+                    <GreenScore>{greenTeamRoundWins}</GreenScore>
+                    { greenTeamRoundWins > redTeamRoundWins ? <MatchOutcome>Victory</MatchOutcome> : <MatchOutcome>Defeat</MatchOutcome> }
+                    <RedScore>{redTeamRoundWins}</RedScore>
+                    <TabButton id='summary' onClick={()=> setDisplayTab('summary')} selected={displayTab === 'summary'}>Summary</TabButton>
+                    <TabButton id='scoreboard' onClick={()=> setDisplayTab('scoreboard')}  selected={displayTab === 'scoreboard'}>Scoreboard</TabButton>
+                    <TabButton id='timeline' onClick={()=> setDisplayTab('timeline')}  selected={displayTab === 'timeline'}>Timeline</TabButton>
+                    <TabButton id='performance' onClick={()=> setDisplayTab('performance')}  selected={displayTab === 'performance'}>Performance</TabButton>
+                </ScoreBox>
+                <DataContainer>
+                    <ChartDisplay display={displayTab} data={data} />
+                </DataContainer>       
+            </MatchGrid> 
+        </div>
+    )
 }
 
 export default Match;
