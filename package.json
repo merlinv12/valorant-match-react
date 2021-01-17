@@ -1,5 +1,6 @@
 {
-  "name": "react-minimal-bp",
+  "name": "valorant-match-react",
+  "homepage": "http://merlinv12.github.io/valorant-match-react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,6 +14,8 @@
     "start:dev": "nodemon server/server.js",
     "build:dev": "webpack -d --watch",
     "build:prod": "webpack",
+    "predeploy": "npm run build:prod",
+    "deploy": "gh-pages -d public",
     "test": "jest"
   },
   "keywords": [],
@@ -37,6 +40,7 @@
     "babel-jest": "^25.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "gh-pages": "^3.1.0",
     "jest": "^24.9.0"
   }
 }
