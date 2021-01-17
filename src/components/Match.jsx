@@ -18,7 +18,7 @@ import fakeData from '../data.js';
 
 
 const MatchBackground = styled.div`
-    background-image: url("/img/valorantbackground.png");
+    background-image: url("img/valorantbackground.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

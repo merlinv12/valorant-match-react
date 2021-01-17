@@ -21,14 +21,14 @@ const ChartBox = styled.td`
 const ChartBoxIcon = styled.div`
     content: ${props => {
         if (props.resultCondition === "Elimination"){
-            return `url("/img/elim.svg")`
+            return `url("img/elim.svg")`
         } else if (props.resultCondition === "Defuse"){
-            return `url("/img/defuse.svg")`
+            return `url("img/defuse.svg")`
         } else if (props.resultCondition === "Spike"){
-            return `url("/img/spike.svg")`
+            return `url("img/spike.svg")`
         }
         else if (props.resultCondition === "Time"){
-            return `url("/img/time.svg")`
+            return `url("img/time.svg")`
         }
     }
     };

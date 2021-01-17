@@ -28,7 +28,7 @@ const TimeLineStatsTableContainer = styled.div`
 
 const HalftimeIcon = styled.td`
     display: block;
-    content: url("/img/half.svg");
+    content: url("img/half.svg");
     padding-top: 40px;
     padding-left: 20px;
     padding-right: 20px;
